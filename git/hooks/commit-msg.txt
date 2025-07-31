@@ -1,0 +1,5 @@
+#!/bin/sh
+if ! grep -Eq "^(feat|fix|docs|style|refactor|perf|test|chore)\(.+\): .+" "$1"; then
+  echo "ERROR: Commit message must follow Conventional Commits (type(scope): description)"
+  exit 1
+fi
