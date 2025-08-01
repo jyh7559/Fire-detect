@@ -1,0 +1,22 @@
+name: Login Page Environment Setup
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  setup-env:
+    runs-on: ubuntu-latest
+    env:
+      LOGIN_USERNAME: ${{ secrets.LOGIN_USERNAME }}
+      LOGIN_PASSWORD: ${{ secrets.LOGIN_PASSWORD }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Show login environment variables (for debug only - do NOT use in production)
+        run: |
+          echo "Username: $LOGIN_USERNAME"
+          echo "Password: $LOGIN_PASSWORD"
